@@ -31,12 +31,10 @@ export const Navbar = () => {
     }
   };
 
-  const handleInstallAppClick = (
-    e: React.MouseEvent<HTMLAnchorElement>
-  ) => {
+  const handleInstallAppClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     if (isInstallable) {
-      installApp(); //Trigger the PWA installation
+      installApp(); // Trigger PWA install
     }
   };
 
@@ -54,7 +52,7 @@ export const Navbar = () => {
   if (isRoomPlannerPage) return null; // Don't render Navbar on Room Planner page
 
   return (
-    <main className="relative">
+    <>
       {/* Navbar for small screens */}
       <div className="md:hidden flex items-center justify-between p-4 bg-violet-700 shadow-md sticky top-0 left-0 w-full z-50">
         <button
@@ -101,71 +99,65 @@ export const Navbar = () => {
       {/* Sidebar */}
       <aside
         aria-label="Sidebar"
-        id="logo-sidebar"
         className={`
-          fixed top-0 left-0 z-40
-          h-screen w-64
-          transform transition-transform duration-300 ease-in-out
-          bg-cover bg-center bg-no-repeat
-          dark:bg-gray-800
-          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
-          md:translate-x-0
-        `}
+          fixed top-0 left-0 z-40 w-64 h-screen 
+          transition-transform bg-cover bg-center bg-no-repeat 
+          dark:bg-gray-800 
+          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+          md:translate-x-0`}
+        id="logo-sidebar"
       >
         <div
-          className="flex h-full flex-col px-3 py-4"
+          className="h-full flex flex-col px-3 py-2 overflow-y-auto bg-cover bg-no-repeat"
           style={{
             backgroundImage:
               "url('https://abicrealtyphdianne.com/media/abic-sidebar.png')",
           }}
         >
-          
-          {/* Logo */}
+          {/* Logo Section */}
           <Link
-            href="/"
             className="hidden md:flex items-center justify-center mb-6"
+            href="/"
           >
             <Image
-              src="/abic-realty-logo.png"
               alt="ABIC Logo"
-              width={200}
               height={200}
-              priority
+              src="/abic-realty-logo.png"
+              width={200}
             />
           </Link>
 
-          {/* Navigation */}
-          <nav className="flex-1 overflow-y-auto">
-            <ul className="space-y-1 font-medium">
-              {[
+          {/* Navigation Links */}
+          <nav className="flex-1">
+            <ul className="space-y-1 mt-24 md:mt-2 font-medium flex-1">
+              {[ 
                 { path: "/", label: "Home" },
                 { path: "/about", label: "About Us" },
                 { path: "/whatsnew", label: "What's New" },
                 { path: "/properties", label: "Properties" },
                 { path: "/services", label: "Services" },
                 { path: "/careers", label: "Careers" },
-                { path: "/contact", label: "Contact Us" },
+                { path: "/contact", label: "Contact Us", external: true },
               ].map((link) => (
                 <li key={link.path}>
                   <Link
+                    className={`flex items-center p-2 text-white rounded-lg group ${
+                      pathname === link.path
+                        ? "bg-violet-800 font-bold"
+                        : "hover:bg-violet-800"
+                    }`}
                     href={link.path}
-                    className={`
-                      flex items-center rounded-lg px-3 py-2 text-white transition
-                      ${
-                        pathname === link.path
-                          ? "bg-violet-800 font-semibold"
-                          : "hover:bg-violet-700"
-                      }
-                    `}
                   >
-                    {link.label}
+                    <span className="ml-3">{link.label}</span>
                   </Link>
                 </li>
               ))}
 
+              {/* Separator */}
               <li className="my-4 border-t border-white/20" />
 
-              {[
+              {/* Additional Links */}
+              {[ 
                 { path: "/documents", label: "DMCI Documents" },
                 { path: "/submit-property", label: "Submit Property" },
                 { path: "/loancalculator", label: "Loan Calculator" },
@@ -175,27 +167,22 @@ export const Navbar = () => {
                   isRoomPlanner: true,
                 },
               ].map((link) => (
-                <li key={link.label}>
+                <li key={link.path || link.label}>
                   <a
+                    className={`flex items-center p-2 text-white rounded-lg dark:text-white group ${
+                      pathname === link.path
+                        ? "bg-violet-800 dark:bg-gray-700"
+                        : "hover:bg-violet-800 dark:hover:bg-gray-700"
+                    }`}
                     href={link.path}
-                    onClick={
-                      link.isRoomPlanner ? handleRoomPlannerClick : undefined
-                    }
-                    className={`
-                      flex items-center rounded-lg px-3 py-2 text-white transition
-                      ${
-                        pathname === link.path
-                          ? "bg-violet-800"
-                          : "hover:bg-violet-700"
-                      }
-                    `}
+                    onClick={link.isRoomPlanner ? handleRoomPlannerClick : undefined}
                   >
-                    {link.label}
+                    <span className="ml-3">{link.label}</span>
                   </a>
                 </li>
               ))}
 
-              {/* Install App */}
+              {/* Show "App Installed" if already installed */}
               {isInstallable && !isInstalled && (
                 <li className="mt-6">
                   <a
@@ -213,24 +200,18 @@ export const Navbar = () => {
                   </a>
                 </li>
               )}
-
-              {isInstalled && (
-                <li className="flex items-center gap-2 text-green-300">
-                  <span>✓</span>
-                  <span>App Installed</span>
-                </li>
-              )}
             </ul>
           </nav>
 
-          {/* Bottom Utilities */}
+          {/* Google Translate Component - positioned at bottom left */}
           <div className="space-y-4">
             <GoogleTranslate />
-
-            {!isRoomPlannerPage && (
-              <div>{/* Footer / Chatbot */}</div>
-            )}
           </div>
+
+          {/* Footer and Chatbot */}
+          {!isRoomPlannerPage && (
+            <div>{/* Footer Content (Social Media Links & Chatbot) */}</div>
+          )}
         </div>
       </aside>
 
@@ -257,6 +238,6 @@ export const Navbar = () => {
           </div>
         </div>
       )}
-    </main>
+    </>
   );
 };
