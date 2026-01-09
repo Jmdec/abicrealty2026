@@ -26,7 +26,7 @@ const SeminarSection = () => {
         {isLoading ? (
           <Loading label="Loading Seminars" />
         ) : articles.records.Seminars?.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-4 py-12 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 gap-4">
             <WhatsNewCard data={articles.records.Seminars} />
           </div>
         ) : (

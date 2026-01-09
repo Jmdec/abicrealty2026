@@ -25,7 +25,7 @@ const NewsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 py-12 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 gap-4">
           {articles.records["Real Estate News"]?.length > 0 ? (
             <WhatsNewCard data={articles.records["Real Estate News"]} />
           ) : (
