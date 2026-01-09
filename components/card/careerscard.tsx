@@ -154,24 +154,9 @@ const CareersCard: React.FC<CareersProps> = ({ career }) => {
         <div>
           <Card>
             <CardBody>
-              <div className="flex flex-col md:flex-row gap-4 items-center">
-                <div className="w-full">
-                  {/* <Image
-                    alt="HeroUI hero Image"
-                    src="https://abicrealtyphdianne.com/media/abic-careers.png"
-                    width={1000}
-                  /> */}
-                   <Image
-  alt="Career Image"
-  src={`https://abicrealtyphdianne.com/careers/images/${selectedCareer?.image}`}
-  width={1000}
-  height={300} // Adjust height as needed
-  
-/>
-
-                </div>
+              <div className="flex gap-4 items-center">
                 <div className="w-full md:px-6">
-                  <h1 className="py-2">Slots: {selectedSlots || "0"}</h1>
+                  <h1 className="py-2">Open Position: {selectedSlots || "0"}</h1>
                   <div className="flex flex-col gap-4">
                     <Autocomplete
                       label="Select a Position"
@@ -214,7 +199,7 @@ const CareersCard: React.FC<CareersProps> = ({ career }) => {
             {(onClose) => (
               <>
                 <ModalHeader className="flex flex-col gap-1">
-                  Apply for {selectedPosition}
+                  Apply for {selectedCareer?.position}
                 </ModalHeader>
                 <form onSubmit={formik.handleSubmit}>
                   <ModalBody>

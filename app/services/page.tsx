@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 import ServicesCard from "@/components/card/servicescard"
+import ContactSection from "../home/contactsection";
 
 export const metadata: Metadata = {
   title: "Our Services",
@@ -46,14 +47,15 @@ export default function ServicesPage() {
     <section className="flex flex-col items-center w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col">
-          <h1 className="font-bold text-3xl md:text-4xl text-violet-700 dark:text-white">Our Services</h1>
-          <p className="md:text-md text-default-500 max-w-2xl dark:text-gray-300 ">
+          <h1 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase">Our Services</h1>
+          <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed text-justify">
             Experience exceptional real estate services, tailored to meet your needs and exceed expectations.
           </p>
         </div>
-
         <ServicesCard />
       </div>
+      <div className="w-full border-t my-5" />
+      <ContactSection />
     </section>
   )
 }

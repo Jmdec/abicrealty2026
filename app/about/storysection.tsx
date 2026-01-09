@@ -5,7 +5,7 @@ import { Card, CardBody } from "@nextui-org/react";
 
 const StorySection = () => {
   return (
-    <section className="w-full py-8 md:py-12">
+    <section className="w-full py-8 md:py-12 bg-gray-50">
       <div className="container mx-auto px-4 lg:px-8 space-y-12">
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">

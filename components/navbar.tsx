@@ -100,7 +100,7 @@ export const Navbar = () => {
       <aside
         aria-label="Sidebar"
         className={`
-          fixed top-0 left-0 z-40 w-64 h-screen 
+          fixed top-0 left-0 z-50 w-64 h-screen 
           transition-transform bg-cover bg-center bg-no-repeat 
           dark:bg-gray-800 
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 

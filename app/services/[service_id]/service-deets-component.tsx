@@ -21,13 +21,13 @@ export default function ServiceDeetsComponent({ service }: ServiceDeetsComponent
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
-      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8">
           <div>
             <div className="flex justify-between items-center">
-              <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">{service.record.name}</h2>
+              <h2 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase ">{service.record.name}</h2>
             </div>
-            <p className="mt-4 text-lg text-gray-500">
+            <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed text-justify mt-2">
               {service.record.description.split("?").map((part, index) => (
                 <span key={index}>
                   {part.trim()}
@@ -61,8 +61,8 @@ export default function ServiceDeetsComponent({ service }: ServiceDeetsComponent
                 isZoomed
                 src={`https://abicrealtyphdianne.com/services/${service.record.image}`}
                 alt={service.record.name}
-                width={1000}
-                height={500}
+                width={300}
+                height={200}
               />
             </div>
           </div>

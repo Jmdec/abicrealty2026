@@ -83,23 +83,90 @@ export default async function CareersPage() {
   return (
     <section className="flex flex-col items-center w-full">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="font-bold text-4xl md:text-4xl text-violet-700 dark:text-white">
+        <div className="flex flex-col">
+          <h1 className="font-bold text-4xl md:text-4xl text-violet-700 dark:text-white uppercase">
             Careers
           </h1>
-          <p className="text-lg md:text-md text-default-500 max-w-lg dark:text-gray-300 leading-relaxed">
-            Explore exciting career opportunities that cultivate your talents and accelerate your professional growth.
-          </p>
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-2">
+          Build a meaningful career with us. We’re looking for passionate individuals
+          who want to grow, innovate, and make a real impact. Whether you’re just starting
+          out or looking to take the next step in your professional journey, you’ll find
+          opportunities here that challenge and inspire you.
+        </p>
+
+          <div className="flex justify-center items-center">
+            <div className="max-w-sm py-8">
+              {careers.length > 0 ? (
+                <CareersCard career={careers} />
+              ) : (
+                <div className="col-span-full">
+                  <NoData />
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
-        <div className="w-full py-8">
-          {careers.length > 0 ? (
-            <CareersCard career={careers} />
-          ) : (
-            <div className="col-span-full">
-              <NoData />
+        <div className="mt-10 py-5 bg-gray-50">
+          <h1 className="font-semibold text-2xl md:text-3xl text-violet-700 dark:text-white mb-8 text-center">
+            Why Join Us?
+          </h1>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm">
+              <h2 className="font-medium text-lg text-gray-900 dark:text-white">
+                Fast Growing Company
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Join a dynamic and rapidly expanding organization where your contributions make a real impact.
+              </p>
             </div>
-          )}
+
+            <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm">
+              <h2 className="font-medium text-lg text-gray-900 dark:text-white">
+                Supportive Work Culture
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Work in a supportive and collaborative atmosphere that fosters creativity and innovation.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm">
+              <h2 className="font-medium text-lg text-gray-900 dark:text-white">
+                Empowered to Lead
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Empower yourself with opportunities to lead projects and drive meaningful change.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm">
+              <h2 className="font-medium text-lg text-gray-900 dark:text-white">
+                Lifelong Learning Culture
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Engage in continuous learning and professional development to enhance your skills.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm">
+              <h2 className="font-medium text-lg text-gray-900 dark:text-white">
+                Cross-Domain Exposure
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Gain valuable experience by working across different domains and technologies.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm">
+              <h2 className="font-medium text-lg text-gray-900 dark:text-white">
+                Work-Life Balance
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Enjoy flexible work arrangements that support both your personal and professional life.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

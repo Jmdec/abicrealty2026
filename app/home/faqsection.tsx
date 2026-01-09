@@ -6,7 +6,7 @@ import FAQAccordion from "@/components/accordion/faq";
 
 const FAQSection = () => {
   return (
-    <section className="flex flex-col items-center gap-6 py-6  md:py-8 w-full">
+    <section className="flex flex-col items-center gap-6 py-6 md:py-8 w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center text-center">
           <h1 className="font-bold text-2xl md:text-3xl text-violet-700 dark:text-white">
@@ -19,10 +19,11 @@ const FAQSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
-          <div>
+          <div className="flex items-center justify-center">
             <Image
               alt="HeroUI hero Image"
               src="https://abicrealtyphdianne.com/media/Questions-rafiki.png"
+              className="h-[50vh] w-full lg:h-full"
             />
           </div>
           <div>

@@ -23,33 +23,34 @@ const ServicesCard = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 py-12 gap-2">
+    <div className="flex py-12 gap-2">
       {services.map((service: any, index: number) => (
         <Link key={index} href={`/services/${service.id}`}>
           <Card>
             <CardBody className="overflow-visible py-2">
-              <Image
-                isBlurred
-                isZoomed
-                alt="Card background"
-                className="rounded-xl"
-                fallbackSrc="https://abicrealtyphdianne.com/media/abic-fallback1.png"
-                height={250}
-                width={500}
-                src={`https://abicrealtyphdianne.com/services/${service.image}`}
-              />
-              <div className="py-4">
-                <h4 className="font-bold text-large">{service.name}</h4>
+              <div className="flex justify-center items-center">
+                <Image
+                  isBlurred
+                  isZoomed
+                  alt="Card background"
+                  className="rounded-xl"
+                  fallbackSrc="https://abicrealtyphdianne.com/media/abic-fallback1.png"
+                  height={300}
+                  width={500}
+                  src={`https://abicrealtyphdianne.com/services/${service.image}`}
+                />
+              </div>
+              <div className="p-5 my-3">
+                <h4 className="font-bold text-2xl my-2">{service.name}</h4>
                 <small className="text-default-500 line-clamp-2">{service.description}</small>
 
-                <p className="text-tiny uppercase font-bold pt-4">
-                  If you have any concerns, please contact: 09455493651
-                </p>
+                
               </div>
             </CardBody>
           </Card>
         </Link>
       ))}
+      
     </div>
   )
 }

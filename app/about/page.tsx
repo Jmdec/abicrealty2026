@@ -57,6 +57,7 @@ export default function AboutPage() {
       <CoreValuesSection />
       <OurTeam/>
       <OurPartnerSection />
+      <div className="w-full border-t my-5" />
       <ContactSection />
     </section>
   );

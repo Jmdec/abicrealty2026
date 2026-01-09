@@ -13,7 +13,7 @@ export default async function OurTeam() {
     const { records } = await response.json(); 
 
     return (
-        <section className="flex flex-col items-center gap-6 py-6 md:py-10 w-full">
+        <section className="flex flex-col items-center gap-6 py-6 md:py-10 w-full bg-gray-50">
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="flex flex-col items-center justify-center text-center">
@@ -26,7 +26,7 @@ export default async function OurTeam() {
                 </div>
 
                 {/* Team Members */}
-                <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-8">
+                <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-8 bg-gray-50">
                     <TeamCard team={records} />
                 </div>
             </div>
