@@ -12,7 +12,7 @@ const ContactInfoCard = () => {
           <div className="bg-violet-200 text-violet-800 px-2 py-2 rounded-lg">
             <FaPhone className="text-violet-700" size={20} />
           </div>
-          <Link href={"tel:09265536964"}>(+63) 926 553 6964</Link>
+          <Link href={"tel:09265536964"}>0926 553 6964</Link>
         </div>
 
         <div className="flex items-center gap-2">
@@ -50,20 +50,20 @@ const ContactInfoCard = () => {
               rel="noopener noreferrer"
               className="break-words"
             >
-               Unit 202, Campos Rueda, Urban Ave., Makati City, Metro Manila, PH 1206
+              Unit 202, Campos Rueda, Urban Ave., Makati City, Metro Manila, PH 1206
             </Link>
           </p>
           <p className="text-sm font-medium">
-            Sales: <Link href={"tel:+639651983796"}>(+63) 965 198 3796</Link>
+            Sales: <Link href={"tel:+639651983796"}>0965 198 3796</Link>
           </p>
           <p className="text-sm font-medium">
-            Leasings: <Link href={"tel:+639651983796"}>(+63) 965 198 3796</Link>
+            Leasings: <Link href={"tel:+639651983796"}>0965 198 3796</Link>
           </p>
           <p className="text-sm font-medium">
-            Employment Inquiry: <Link href={"tel:+639455493651"}>(+63) 945 549 3651</Link>
+            Employment Inquiry: <Link href={"tel:+639455493651"}>0945 549 3651</Link>
           </p>
           <p className="text-sm font-medium">
-            Customer Care (PHONE): <Link href={"tel:+639651983796"}>(+63) 965 198 3796</Link>
+            Customer Care (PHONE): <Link href={"tel:+639651983796"}>0965 198 3796</Link>
           </p>
           <p className="text-sm font-medium">
             Customer Care (LANDLINE): <Link href={"tel:+63286466136"}>02-8646-6136</Link>

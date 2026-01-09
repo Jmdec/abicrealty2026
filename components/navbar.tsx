@@ -31,10 +31,12 @@ export const Navbar = () => {
     }
   };
 
-  const handleInstallAppClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleInstallAppClick = (
+    e: React.MouseEvent<HTMLAnchorElement>
+  ) => {
     e.preventDefault();
     if (isInstallable) {
-      installApp(); // Trigger PWA install
+      installApp(); //Trigger the PWA installation
     }
   };
 
@@ -52,7 +54,7 @@ export const Navbar = () => {
   if (isRoomPlannerPage) return null; // Don't render Navbar on Room Planner page
 
   return (
-    <>
+    <main className="relative">
       {/* Navbar for small screens */}
       <div className="md:hidden flex items-center justify-between p-4 bg-violet-700 shadow-md sticky top-0 left-0 w-full z-50">
         <button
@@ -99,143 +101,136 @@ export const Navbar = () => {
       {/* Sidebar */}
       <aside
         aria-label="Sidebar"
-        className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform bg-cover bg-center bg-no-repeat dark:bg-gray-800 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
         id="logo-sidebar"
+        className={`
+          fixed top-0 left-0 z-40
+          h-screen w-64
+          transform transition-transform duration-300 ease-in-out
+          bg-cover bg-center bg-no-repeat
+          dark:bg-gray-800
+          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0
+        `}
       >
         <div
-          className="h-full flex flex-col px-3 py-2 overflow-y-auto bg-cover bg-no-repeat"
+          className="flex h-full flex-col px-3 py-4"
           style={{
             backgroundImage:
               "url('https://abicrealtyphdianne.com/media/abic-sidebar.png')",
           }}
         >
-          {/* Logo Section */}
+          
+          {/* Logo */}
           <Link
-            className="hidden md:flex items-center mb-5 mt-24 py-8 md:mt-0"
             href="/"
+            className="hidden md:flex items-center justify-center mb-6"
           >
             <Image
-              alt="ABIC Logo"
-              height={200}
               src="/abic-realty-logo.png"
+              alt="ABIC Logo"
               width={200}
+              height={200}
+              priority
             />
           </Link>
 
-          {/* Navigation Links */}
-          <ul className="space-y-1 mt-24 md:mt-2 font-medium flex-1">
-            {[ 
-              { path: "/", label: "Home" },
-              { path: "/about", label: "About Us" },
-              { path: "/whatsnew", label: "What's New" },
-              { path: "/properties", label: "Properties" },
-              { path: "/services", label: "Services" },
-              { path: "/careers", label: "Careers" },
-              { path: "/contact", label: "Contact Us", external: true },
-            ].map((link) => (
-              <li key={link.path}>
-                <Link
-                  className={`flex items-center p-2 text-white rounded-lg group ${
-                    pathname === link.path
-                      ? "bg-violet-800 font-bold"
-                      : "hover:bg-violet-800"
-                  }`}
-                  href={link.path}
-                >
-                  <span className="ml-3">{link.label}</span>
-                </Link>
-              </li>
-            ))}
-
-            {/* Separator */}
-            <div className="my-4 py-8" />
-
-            {/* Additional Links */}
-            {[ 
-              { path: "/documents", label: "DMCI Documents" },
-              { path: "/submit-property", label: "Submit Property" },
-              { path: "/loancalculator", label: "Loan Calculator" },
-              {
-                path: "/room-planner",
-                label: "Room Planner",
-                isRoomPlanner: true,
-              },
-            ].map((link) => (
-              <li key={link.path || link.label}>
-                <a
-                  className={`flex items-center p-2 text-white rounded-lg dark:text-white group ${
-                    pathname === link.path
-                      ? "bg-violet-800 dark:bg-gray-700"
-                      : "hover:bg-violet-800 dark:hover:bg-gray-700"
-                  }`}
-                  href={link.path}
-                  onClick={link.isRoomPlanner ? handleRoomPlannerClick : undefined}
-                >
-                  <span className="ml-3">{link.label}</span>
-                </a>
-              </li>
-            ))}
-
-            {/* Install App Button - Only show if app is installable and not installed */}
-            {isInstallable && !isInstalled && (
-              <>
-                {/* Divider line with top spacing */}
-                <div className="mt-12">
-                  <div className="my-10"></div> 
-
-                  <li>
-                    <a
-                      className="flex items-center p-3 rounded-lg cursor-pointer 
-                                border-2 border-purple-500 text-purple-400 font-bold 
-                                shadow-md transition-all duration-300
-                                hover:text-purple-300 hover:border-purple-400 
-                                hover:shadow-[0_0_10px_2px_rgba(168,85,247,0.7)]"
-                      href="#"
-                      onClick={handleInstallAppClick}
-                    >
-                      <svg 
-                        className="w-5 h-5 text-purple-400 mr-2" 
-                        fill="currentColor" 
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-2 0V5H5v10h10v-1a1 1 0 112 0v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/>
-                        <path d="M13 8l-2-2v5a1 1 0 11-2 0V6L7 8a1 1 0 01-1.414-1.414l3-3a1 1 0 011.414 0l3 3A1 1 0 0113 8z"/>
-                      </svg>
-                      <span className="tracking-wide">Install App</span>
-                    </a>
-                  </li>
-                </div>
-              </>
-            )}
-
-            {/* Show "App Installed" if already installed */}
-            {isInstalled && (
-              <li>
-                <div className="flex items-center p-2 text-green-300 rounded-lg">
-                  <svg 
-                    className="w-5 h-5 text-green-300 mr-0" 
-                    fill="currentColor" 
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
+          {/* Navigation */}
+          <nav className="flex-1 overflow-y-auto">
+            <ul className="space-y-1 font-medium">
+              {[
+                { path: "/", label: "Home" },
+                { path: "/about", label: "About Us" },
+                { path: "/whatsnew", label: "What's New" },
+                { path: "/properties", label: "Properties" },
+                { path: "/services", label: "Services" },
+                { path: "/careers", label: "Careers" },
+                { path: "/contact", label: "Contact Us" },
+              ].map((link) => (
+                <li key={link.path}>
+                  <Link
+                    href={link.path}
+                    className={`
+                      flex items-center rounded-lg px-3 py-2 text-white transition
+                      ${
+                        pathname === link.path
+                          ? "bg-violet-800 font-semibold"
+                          : "hover:bg-violet-700"
+                      }
+                    `}
                   >
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  <span className="ml-3">App Installed</span>
-                </div>
-              </li>
-            )}
-          </ul>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
 
-          {/* Google Translate Component - positioned at bottom left */}
-          <div className="mt-auto mb-4">
+              <li className="my-4 border-t border-white/20" />
+
+              {[
+                { path: "/documents", label: "DMCI Documents" },
+                { path: "/submit-property", label: "Submit Property" },
+                { path: "/loancalculator", label: "Loan Calculator" },
+                {
+                  path: "/room-planner",
+                  label: "Room Planner",
+                  isRoomPlanner: true,
+                },
+              ].map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.path}
+                    onClick={
+                      link.isRoomPlanner ? handleRoomPlannerClick : undefined
+                    }
+                    className={`
+                      flex items-center rounded-lg px-3 py-2 text-white transition
+                      ${
+                        pathname === link.path
+                          ? "bg-violet-800"
+                          : "hover:bg-violet-700"
+                      }
+                    `}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+
+              {/* Install App */}
+              {isInstallable && !isInstalled && (
+                <li className="mt-6">
+                  <a
+                    href="#"
+                    onClick={handleInstallAppClick}
+                    className="
+                      flex w-full items-center justify-center gap-2
+                      rounded-lg border-2 border-purple-500 px-4 py-3
+                      text-purple-300 font-semibold transition
+                      hover:border-purple-400 hover:text-purple-200
+                      hover:shadow-[0_0_12px_rgba(168,85,247,0.6)]
+                    "
+                  >
+                    <span>Install App</span>
+                  </a>
+                </li>
+              )}
+
+              {isInstalled && (
+                <li className="flex items-center gap-2 text-green-300">
+                  <span>✓</span>
+                  <span>App Installed</span>
+                </li>
+              )}
+            </ul>
+          </nav>
+
+          {/* Bottom Utilities */}
+          <div className="space-y-4">
             <GoogleTranslate />
-          </div>
 
-          {/* Footer and Chatbot */}
-          {!isRoomPlannerPage && (
-            <div>{/* Footer Content (Social Media Links & Chatbot) */}</div>
-          )}
+            {!isRoomPlannerPage && (
+              <div>{/* Footer / Chatbot */}</div>
+            )}
+          </div>
         </div>
       </aside>
 
@@ -262,6 +257,6 @@ export const Navbar = () => {
           </div>
         </div>
       )}
-    </>
+    </main>
   );
 };

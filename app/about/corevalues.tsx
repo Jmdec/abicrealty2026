@@ -5,7 +5,7 @@ import CoreValuesCard from "@/components/card/corevaluescard";
 
 const CoreValuesSection = () => {
   return (
-    <section className="flex flex-col items-center gap-6 py-6 md:py-16 w-full">
+    <section className="flex flex-col items-center gap-6 py-6 md:py-10 w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center text-center">
           <h1 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase">
@@ -16,7 +16,7 @@ const CoreValuesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-8 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 py-8 gap-2">
           <CoreValuesCard />
         </div>
       </div>

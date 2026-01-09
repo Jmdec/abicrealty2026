@@ -4,7 +4,6 @@ import ContactSection from "../home/contactsection";
 
 import AbicSection from "./abicsection";
 import CoreValuesSection from "./corevalues";
-import MissionVissionSection from "./vm";
 import StorySection from "./storysection";
 import OurPartnerSection from "./partner";
 import OurTeam from "./ourteam";
@@ -50,13 +49,11 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function AboutPage() {
   return (
     <section className="flex flex-col items-center w-full">
       <AbicSection />
       <StorySection />
-      <MissionVissionSection />
       <CoreValuesSection />
       <OurTeam/>
       <OurPartnerSection />

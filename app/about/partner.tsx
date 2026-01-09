@@ -34,10 +34,10 @@ export default async function OurPartnerSection() {
   const data: Partner[] = await fetchCareers();
 
   return (
-    <section className="flex flex-col items-center gap-6 py-6 md:py-16 w-full">
+    <section className="flex flex-col items-center gap-6 py-6 md:py-10 w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="font-bold text-violet-700 uppercase text-3xl">
+          <h1 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase my-3">
             Our Partner
           </h1>
           <p className="text-default-500 max-w-xl text-sm md:text-lg">
@@ -47,7 +47,7 @@ export default async function OurPartnerSection() {
         </div>
 
         {/* Adjusted grid for centering and removing spacing */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 max-w-2xl mx-auto py-12">
+        <div className="grid grid-cols-4 md:grid-cols-6 gap-0 max-w-6xl mx-auto py-12">
           {data.map((partner: Partner, index: number) => (
             <div key={partner.id || index} className="flex justify-center items-center">
               {partner.image ? (

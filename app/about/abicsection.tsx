@@ -15,7 +15,7 @@ const AbicSection = () => {
   return (
     <section className="flex flex-col items-center gap-6  md:py-8 w-full">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 items-center">
           <div>
             <Image
               isBlurred
@@ -25,11 +25,11 @@ const AbicSection = () => {
               src="https://abicrealtyphdianne.com/media/abic-about.jpg"
             />
           </div>
-          <div className="md:px-4">
-            <h1 className="font-bold text-lg md:text-2xl text-violet-800 py-2 uppercase">
+          <div className="md:px-2">
+            <h1 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase my-3">
               Who is ABIC Realty & Consultancy Corporation
             </h1>
-            <p>
+            <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed text-justify">
               At <strong>ABIC Realty & Consultancy Corporation</strong>, we
               pride ourselves on being a leader in the real estate market. With
               over three decades of experience, our team is dedicated to helping
@@ -38,7 +38,7 @@ const AbicSection = () => {
               building relationships and ensuring satisfaction.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 py-8 gap-2">
+            <div className="grid grid-cols-2 py-8 gap-2">
               {services.map((service, index) => (
                 <Card key={index} className="py-2">
                   <CardBody className="px-4">
@@ -56,6 +56,8 @@ const AbicSection = () => {
         </div>
       </div>
     </section>
+
+    
   );
 };
 
