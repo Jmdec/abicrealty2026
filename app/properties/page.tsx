@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import PropertyCard from "@/components/card/propertycard";
 import NoData from "@/components/error/nodata";
+import { Trash, X } from "lucide-react";
 
 interface Property {
   id: string;
@@ -34,6 +35,13 @@ export default function PropertiesPage() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<"" | "for-sale" | "for-rent">("");
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
+  const [minPrice, setMinPrice] = useState<number | "">("");
+  const [maxPrice, setMaxPrice] = useState<number | "">("");
+
+  const ITEMS_PER_PAGE = 10;
+  
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   React.useEffect(() => {
     fetchProperties()
@@ -55,9 +63,11 @@ export default function PropertiesPage() {
     .replace(/\b(\d)\s*br\b/g, "$1br")
     .trim();
 }
+  
   useEffect(() => {
     let filtered = [...properties];
 
+    // 🔍 Search
     if (search.trim()) {
       const searchLower = normalizeSearchTerm(search);
 
@@ -65,17 +75,29 @@ export default function PropertiesPage() {
         const propertyData = normalizeSearchTerm(
           `${p.name} ${p.location} ${p.description} ${p.unit_status} ${p.unit_type} ${p.status} ${p.price}`
         );
-
         return propertyData.includes(searchLower);
       });
     }
 
+    // 🏷 Sale / Rent
     if (filter === "for-sale") {
       filtered = filtered.filter((p) => p.status === "For Sale");
     } else if (filter === "for-rent") {
       filtered = filtered.filter((p) => p.status === "For Rent");
     }
 
+    // 💰 PRICE FILTER (NEW)
+    filtered = filtered.filter((p) => {
+      const price = p.price ?? 0;
+      const max = p.max_price ?? price;
+
+      if (minPrice !== "" && max < minPrice) return false;
+      if (maxPrice !== "" && price > maxPrice) return false;
+
+      return true;
+    });
+
+    // 🔀 Sorting
     filtered.sort((a, b) => {
       if (filter === "") {
         if (a.status === "For Sale" && b.status === "For Rent") return -1;
@@ -85,7 +107,16 @@ export default function PropertiesPage() {
     });
 
     setFilteredProperties(filtered);
-  }, [properties, search, filter]);
+    setCurrentPage(1); // reset pagination
+  }, [properties, search, filter, minPrice, maxPrice]);
+
+
+  const totalPages = Math.ceil(filteredProperties.length / ITEMS_PER_PAGE);
+
+  const paginatedProperties = filteredProperties.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   return (
     <section className="flex flex-col items-center w-full min-h-screen py-10 bg-gray-50 dark:bg-gray-900">
@@ -101,7 +132,7 @@ export default function PropertiesPage() {
         </header>
 
         {/* Filter & Search bar container */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-10">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-3 mb-10">
           {/* Filter buttons */}
           <div className="flex space-x-4">
             <button
@@ -124,7 +155,7 @@ export default function PropertiesPage() {
               }`}
               aria-pressed={filter === "for-sale"}
             >
-              For Sale
+              Sale
             </button>
             <button
               onClick={() => setFilter("for-rent")}
@@ -135,7 +166,7 @@ export default function PropertiesPage() {
               }`}
               aria-pressed={filter === "for-rent"}
             >
-              For Rent
+              Rent
             </button>
           </div>
 
@@ -150,12 +181,47 @@ export default function PropertiesPage() {
               aria-label="Search properties"
             />
           </div>
+
+          <div className="lg:border lg:border-l lg:border-gray-200 lg:h-10"/>
+
+          {/* Price Filter */}
+          <div className="flex gap-2 w-full max-w-md">
+            <input
+              type="number"
+              placeholder="Min Price"
+              value={minPrice}
+              onChange={(e) =>
+                setMinPrice(e.target.value ? Number(e.target.value) : "")
+              }
+              className="w-full rounded-lg border px-4 py-2 dark:bg-gray-800 dark:text-white"
+            />
+
+            <input
+              type="number"
+              placeholder="Max Price"
+              value={maxPrice}
+              onChange={(e) =>
+                setMaxPrice(e.target.value ? Number(e.target.value) : "")
+              }
+              className="w-full rounded-lg border px-4 py-2 dark:bg-gray-800 dark:text-white"
+            />
+
+            <button
+              onClick={() => {
+                setMinPrice("");
+                setMaxPrice("");
+              }}
+              className="px-4 py-2 rounded-lg bg-gray-300 dark:bg-gray-700 text-sm"
+            >
+              <Trash className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Properties grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-4 xl:grid-cols-5">
           {filteredProperties.length > 0 ? (
-            filteredProperties.map((property) => (
+            paginatedProperties.map((property) => (
               <PropertyCard key={property.id} property={property} />
             ))
           ) : (
@@ -164,6 +230,47 @@ export default function PropertiesPage() {
             </div>
           )}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mt-10 flex-wrap">
+
+            {/* Previous */}
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 disabled:opacity-50"
+            >
+              Prev
+            </button>
+
+            {/* Page Numbers */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`px-4 py-2 rounded-lg font-semibold transition ${
+                  page === currentPage
+                    ? "bg-violet-700 text-white"
+                    : "bg-gray-200 dark:bg-gray-700 hover:bg-violet-600 hover:text-white"
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+
+            {/* Next */}
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() =>
+                setCurrentPage((p) => Math.min(totalPages, p + 1))
+              }
+              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
