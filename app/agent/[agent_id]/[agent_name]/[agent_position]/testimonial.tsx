@@ -14,7 +14,7 @@ interface TestimonialsProps {
 
 const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 py-4 gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-4 gap-2">
       {testimonials.map((testimonial) => (
         <Card key={testimonial.id} className="shadow-none border">
           <CardBody>

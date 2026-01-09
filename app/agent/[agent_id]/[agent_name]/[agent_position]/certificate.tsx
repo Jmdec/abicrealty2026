@@ -30,7 +30,7 @@ const Certificates: React.FC<CertificateProps> = ({ cert }) => {
 
   return (
     <PhotoProvider>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-2 py-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 py-6">
         {sortedCerts.map((certificate) => {
           const imageUrl = `https://abicrealtyphdianne.com/certificates/${certificate.image}`;
           return (

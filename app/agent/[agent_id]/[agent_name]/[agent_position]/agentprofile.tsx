@@ -65,191 +65,144 @@ END:VCARD
   };
 
   return (
-    <Card isBlurred className="border-none bg-background/60" shadow="sm">
-      <CardBody>
-        <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
+    <Card
+      isBlurred
+      shadow="sm"
+      className="border-none bg-background/60"
+    >
+      <CardBody className="p-4 md:p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 items-start">
+
           {/* Profile Image */}
-          <div className="relative col-span-6 md:col-span-3">
-            <Image
-              alt={profile.name}
-              className="object-cover object-top w-full h-full"
-              src={
-                profile.profile?.image
-                  ? `https://abicrealtyphdianne.com/profiles/${profile.profile.image}`
-                  : "/default-profile.jpg"
-              }
-            />
-            <h2 className="text-md uppercase text-foreground/80">
-              {profile.profile?.position || "Agent"}
-            </h2>
+          <div className="w-full">
+            <div className="relative md:w-[40vh] md:h-[50vh] lg:w-full lg:h-full overflow-hidden rounded-xl border border-foreground/10 shadow-md">
+              <Image
+                alt={profile.name}
+                className="object-contain object-top"
+                src={
+                  profile.profile?.image
+                    ? `https://abicrealtyphdianne.com/profiles/${profile.profile.image}`
+                    : "/default-profile.jpg"
+                }
+              />
+            </div>
           </div>
 
           {/* Profile Info */}
-          <div className="flex flex-col col-span-6 md:col-span-9">
-            <div className="flex justify-between items-start">
-              <div className="flex flex-col gap-0">
-                <h1 className="text-3xl font-bold mt-2 uppercase">
-                  {profile.name}
-                </h1>
-                <h2 className="text-md uppercase text-foreground/80">
-                  {profile.profile?.position || ""}
-                </h2>
+          <div className="flex flex-col gap-4">
 
-                <hr className="my-4" />
+            {/* Name & Position */}
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold uppercase">
+                {profile.name}
+              </h1>
+              <p className="text-sm md:text-base uppercase text-foreground/70">
+                {profile.profile?.position}
+              </p>
+            </div>
 
-                {/* Contact Information */}
-                <div className="py-2">
-                  <h1 className="text-sm text-foreground/70">
-                    Contact Information
-                  </h1>
-                  <div className="flex flex-col py-4 gap-2">
-                    {/* Address */}
-                    <div className="flex items-center gap-2">
-                      <div className="bg-violet-200 px-2 py-2 rounded-lg">
-                        <MdOutlineWork className="text-violet-700" size={18} />
-                      </div>
-                      <span>
-                        Unit 202, Campos Rueda Building, 101 Urban Ave, Makati,
-                        1206 Metro Manila
-                      </span>
+            <hr />
+
+            {/* Contact Information */}
+            <div>
+              <h2 className="text-sm font-semibold text-foreground/70 mb-3">
+                Contact Information
+              </h2>
+
+              <div className="flex flex-col gap-3 text-sm">
+
+                {/* Address */}
+                <div className="flex gap-3 items-start">
+                  <div className="bg-violet-200 p-2 rounded-lg shrink-0">
+                    <MdOutlineWork className="text-violet-700" size={18} />
+                  </div>
+                  <span className="leading-relaxed">
+                    Unit 202, Campos Rueda Building, 101 Urban Ave, Makati, 1206 Metro Manila
+                  </span>
+                </div>
+
+                {/* Email */}
+                {profile.email && (
+                  <div className="flex gap-3 items-center">
+                    <div className="bg-violet-200 p-2 rounded-lg shrink-0">
+                      <MdMail className="text-violet-700" size={18} />
                     </div>
-
-                    {/* Email */}
-                    {profile.email && (
-                      <div className="flex items-center gap-2">
-                        <div className="bg-violet-200 px-2 py-2 rounded-lg">
-                          <MdMail className="text-violet-700" size={18} />
-                        </div>
-                        <Link
-                          className="text-blue-600 hover:underline"
-                          href={`mailto:${profile.email}`}
-                        >
-                          {profile.email}
-                        </Link>
-                      </div>
-                    )}
-
-                    {/* Phone */}
-                    {profile.profile?.phone && (
-                      <div className="flex items-center gap-2">
-                        <div className="bg-violet-200 px-2 py-2 rounded-lg">
-                          <MdPhone className="text-violet-700" size={18} />
-                        </div>
-                        <Link
-                          className="text-blue-600 hover:underline"
-                          href={`tel:${profile.profile.phone}`}
-                        >
-                          <span className="text-blue-600">
-                            +63 {formatPhoneNumber(profile.profile.phone)}
-                          </span>
-                        </Link>
-                      </div>
-                    )}
-
-                    {/* Telegram */}
-                    {profile.profile?.telegram && (
-                      <div className="flex items-center gap-2">
-                        <div className="bg-violet-200 px-2 py-2 rounded-lg">
-                          <FaTelegram className="text-violet-700" size={18} />
-                        </div>
-                        <Link
-                          className="text-blue-600 hover:underline"
-                          target="_blank"
-                          href={`https://t.me/+63${profile.profile.telegram}`}
-                        >
-                          <span className="text-blue-600">
-                            +63 {formatPhoneNumber(profile.profile.telegram)}
-                          </span>
-                        </Link>
-                      </div>
-                    )}
-
-                    {/* Viber */}
-                    {profile.profile?.viber && (
-                      <div className="flex items-center gap-2">
-                        <div className="bg-violet-200 px-2 py-2 rounded-lg">
-                          <FaViber className="text-violet-700" size={18} />
-                        </div>
-                        <Link
-                          className="text-blue-600 hover:underline"
-                          target="_blank"
-                          href={`viber://chat?number=${profile.profile.viber}`}
-                        >
-                          <span className="text-blue-600">
-                            +63 {formatPhoneNumber(profile.profile.viber)}
-                          </span>
-                        </Link>
-                      </div>
-                    )}
-
-                    {/* WhatsApp */}
-                    {profile.profile?.whatsapp && (
-                      <div className="flex items-center gap-2">
-                        <div className="bg-violet-200 px-2 py-2 rounded-lg">
-                          <FaWhatsapp className="text-violet-700" size={18} />
-                        </div>
-                        <Link
-                          className="text-blue-600 hover:underline"
-                          target="_blank"
-                          href={`https://wa.me/63${profile.profile.whatsapp}`}
-                        >
-                          <span className="text-blue-600">
-                            +63 {formatPhoneNumber(profile.profile.whatsapp)}
-                          </span>
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Social Media */}
-                <div className="py-2 z-50">
-                  <h1 className="text-sm text-foreground/70">Social Media</h1>
-                  <div className="flex flex-col py-4 gap-2">
-                    {/* Facebook */}
-                    {isValidUrl(profile.profile?.facebook) && (
-                      <div className="flex items-center gap-2">
-                        <div className="bg-violet-200 px-2 py-2 rounded-lg">
-                          <MdFacebook className="text-violet-700" size={18} />
-                        </div>
-                        <Link
-                          target="_blank"
-                          href={profile.profile?.facebook as string}
-                        >
-                          <span className="text-blue-600">{profile.name}</span>
-                        </Link>
-                      </div>
-                    )}
-
-                    {/* Instagram */}
-                    {isValidUrl(profile.profile?.instagram) && (
-                      <div className="flex items-center gap-2">
-                        <div className="bg-violet-200 px-2 py-2 rounded-lg">
-                          <FaInstagram className="text-violet-700" size={18} />
-                        </div>
-                        <Link
-                          target="_blank"
-                          href={profile.profile?.instagram as string}
-                        >
-                          <span className="text-blue-600">{profile.name}</span>
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Save Contact Button - bottom right, mobile only */}
-                  <div className="flex justify-end mt-4 md:hidden">
-                    <button
-                      onClick={handleSaveContact}
-                      className="flex items-center bg-violet-600 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-violet-700 transition"
+                    <Link
+                      href={`mailto:${profile.email}`}
+                      className="text-blue-600 hover:underline break-all"
                     >
-                      <LuDownload className="w-4 h-4 mr-1" />
-                      Save Contact
-                    </button>
+                      {profile.email}
+                    </Link>
                   </div>
-                </div>
+                )}
+
+                {/* Phone */}
+                {profile.profile?.phone && (
+                  <div className="flex gap-3 items-center">
+                    <div className="bg-violet-200 p-2 rounded-lg shrink-0">
+                      <MdPhone className="text-violet-700" size={18} />
+                    </div>
+                    <Link
+                      href={`tel:${profile.profile.phone}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      {formatPhoneNumber(profile.profile.phone)}
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
+
+            {/* Social Media */}
+            <div>
+              <h2 className="text-sm font-semibold text-foreground/70 mb-3">
+                Social Media
+              </h2>
+
+              <div className="flex flex-col gap-3 text-sm">
+                {isValidUrl(profile.profile?.facebook) && (
+                  <div className="flex gap-3 items-center">
+                    <div className="bg-violet-200 p-2 rounded-lg shrink-0">
+                      <MdFacebook className="text-violet-700" size={18} />
+                    </div>
+                    <Link
+                      href={profile.profile?.facebook as string}
+                      target="_blank"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {profile.name}
+                    </Link>
+                  </div>
+                )}
+
+                {isValidUrl(profile.profile?.instagram) && (
+                  <div className="flex gap-3 items-center">
+                    <div className="bg-violet-200 p-2 rounded-lg shrink-0">
+                      <FaInstagram className="text-violet-700" size={18} />
+                    </div>
+                    <Link
+                      href={profile.profile?.instagram as string}
+                      target="_blank"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {profile.name}
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Mobile Save Button */}
+            <div className="flex justify-end md:hidden pt-2">
+              <button
+                onClick={handleSaveContact}
+                className="flex items-center gap-2 bg-violet-600 text-white text-sm font-semibold px-4 py-2 rounded-lg shadow hover:bg-violet-700 transition"
+              >
+                <LuDownload className="w-4 h-4" />
+                Save Contact
+              </button>
+            </div>
+
           </div>
         </div>
       </CardBody>
