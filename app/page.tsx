@@ -43,7 +43,7 @@ export default async function SinglePropertyPage() {
   const properties = await fetchProperties();
 
   return (
-    <section className="flex flex-col items-center w-full">
+    <section className="bg-gray-50 flex flex-col items-center w-full">
       <HeroSection />
       <PropertySection properties={properties} />
       <FAQSection />

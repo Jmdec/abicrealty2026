@@ -30,22 +30,22 @@ const RatingSection = () => {
                   {[
                     {
                       icon: <MdHomeRepairService className="text-violet-700" size={24} />,
-                      title: "Improves Products/Services:",
+                      title: "Improves Products/Services",
                       description: "Helps identify areas for improvement.",
                     },
                     {
                       icon: <RiUserHeartFill className="text-violet-700" size={24} />,
-                      title: "Enhances Customer Experience:",
+                      title: "Enhances Customer Experience",
                       description: "Shows what customers value and what needs adjustment.",
                     },
                     {
                       icon: <MdLoyalty className="text-violet-700" size={24} />,
-                      title: "Builds Customer Loyalty:",
+                      title: "Builds Customer Loyalty",
                       description: "Demonstrates that the business values customer opinions.",
                     },
                     {
                       icon: <TbUserQuestion className="text-violet-700" size={24} />,
-                      title: "Guides Business Decisions:",
+                      title: "Guides Business Decisions",
                       description: "Provides data-driven insights for strategic planning.",
                     },
                   ].map((item, index) => (
@@ -54,8 +54,8 @@ const RatingSection = () => {
                         <div className="flex md:flex-col md:justify-center items-center gap-4">
                           <div className="bg-violet-300 p-2 rounded-lg">{item.icon}</div>
                           <div className="md:text-center">
-                            <h2 className="font-bold md:text-lg">{item.title}</h2>
-                            <p className="text-default-500 text-sm">{item.description}</p>
+                            <h2 className="font-bold text-xl md:text-md">{item.title}</h2>
+                            <p className="text-default-500 text-sm lg:max-w-xs">{item.description}</p>
                           </div>
                         </div>
                       </CardBody>
