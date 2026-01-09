@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 
 const DocumentsPage = () => {
   return (
-    <section className="flex flex-col items-center w-full">
+    <section className="flex flex-col items-center w-full mb-10">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="text-start">
           <h1 className="font-bold text-4xl md:text-4xl text-violet-700 dark:text-white">

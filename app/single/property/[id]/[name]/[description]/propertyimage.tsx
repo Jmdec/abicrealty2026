@@ -108,7 +108,7 @@ const PropertyImage: React.FC<PropertyProps> = ({ properties }) => {
             <div key={index} className="keen-slider__slide">
               <Image
                 alt={`Slide ${index}`}
-                className="w-full max-h-[250px] md:max-h-[600px] object-cover rounded-lg object-center overflow-hidden"
+                className="w-full max-h-[20vh] md:max-h-[300px] lg:max-h-[560px] object-cover rounded-lg object-center overflow-hidden"
                 src={`https://abicrealtyphdianne.com/properties/images/${image}`}
                 width={"100%"}
               />

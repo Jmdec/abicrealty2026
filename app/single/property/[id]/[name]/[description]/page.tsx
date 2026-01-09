@@ -4,6 +4,7 @@ import PropertyDetails from './propertydetails';
 import { Toaster } from 'react-hot-toast';
 import ListingsInqiryCard from './propertyinquiry';
 import AgentProfile from '@/app/single/property/[id]/[name]/[description]/profilecard';
+import FAQ from '@/app/single/property/[id]/[name]/[description]/faq';
 
 
 // Capitalize function for the name
@@ -96,13 +97,16 @@ export default async function PropertyPage({
                             <PropertyImage properties={[data]} />
                             <PropertyDetails properties={data} />
                         </div>
-                        <div className="col-span-3 flex flex-col gap-4 md:col-span-1 ">
+                        <div className="col-span-3 flex flex-col gap-4 lg:col-span-1 items-center justify-center">
                             <div className="w-full">
                                 <ListingsInqiryCard data={data} />
                             </div>
                             <div>
                                 <AgentProfile agent={fetchAgent} />
                             </div>
+                        </div>
+                        <div className="lg:hidden md:col-span-3">
+                            <FAQ />
                         </div>
                     </div>
                 </div>

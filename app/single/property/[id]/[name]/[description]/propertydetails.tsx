@@ -93,20 +93,17 @@ const PropertyDetails: React.FC<PropertyProps> = ({ properties }) => {
             </div>
 
             {/* Property Location */}
-           <div>
-  <p className="text-default-500 text-sm">
-    {properties.location}
-  </p>
-</div>
+            <div>
+                <p className="text-default-500 text-sm">
+                    {properties.location}
+                </p>
+            </div>
 
-<div className="mt-4">
-  <p className=" text-xl font-bold ">
-    ₱{Number(properties.price).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-  </p>
-</div>
-
-
-
+            <div className="mt-4">
+                <p className=" text-xl font-bold ">
+                    ₱{Number(properties.price).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </p>
+            </div>
 
             <div className="flex flex-col gap-6 mt-4">
                 {/* Description */}
@@ -267,7 +264,9 @@ const PropertyDetails: React.FC<PropertyProps> = ({ properties }) => {
                         properties={[properties]}
                     />
                 </div>
-                <FAQ />
+                <div className="hidden md:hidden lg:block">
+                    <FAQ />
+                </div>
             </div>
 
 
