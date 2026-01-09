@@ -107,17 +107,18 @@ export default function RootLayout({
         {/* ✅ PWA Installer */}
         <PWAInstaller />
 
-        <div className="relative flex flex-col min-h-screen">
+        <div className="relative flex w-full">
           <Navbar />
           <LoadingWrapper>
             <main className={clsx("flex-grow", !noSidebar && "md:ml-64")}>
               {children}
+              <div className="-ml-64">
+              <Footer />
+              </div>
             </main>
-            <Footer />
             <FloatingIcons />
           </LoadingWrapper>
         </div>
-
         <Chatbot />
       </body>
     </html>

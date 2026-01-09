@@ -8,7 +8,7 @@ import SearchBar from "@/components/form/searchbar";
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-auto overflow-vissible">
+    <section className="relative w-full h-auto overflow-visible">
       {/* Background Video */}
       <video
         autoPlay
