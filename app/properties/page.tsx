@@ -56,19 +56,19 @@ export default function PropertiesPage() {
     .trim();
 }
   useEffect(() => {
-    let filtered = properties;
+    let filtered = [...properties];
 
-   if (search.trim()) {
-    const searchLower = normalizeSearchTerm(search);
+    if (search.trim()) {
+      const searchLower = normalizeSearchTerm(search);
 
-    filtered = filtered.filter((p) => {
-      const propertyData = normalizeSearchTerm(
-        `${p.name} ${p.location} ${p.description} ${p.unit_status} ${p.unit_type} ${p.status} ${p.price}`
-      );
+      filtered = filtered.filter((p) => {
+        const propertyData = normalizeSearchTerm(
+          `${p.name} ${p.location} ${p.description} ${p.unit_status} ${p.unit_type} ${p.status} ${p.price}`
+        );
 
-      return propertyData.includes(searchLower);
-    });
-  }
+        return propertyData.includes(searchLower);
+      });
+    }
 
     if (filter === "for-sale") {
       filtered = filtered.filter((p) => p.status === "For Sale");
@@ -76,12 +76,16 @@ export default function PropertiesPage() {
       filtered = filtered.filter((p) => p.status === "For Rent");
     }
 
-    filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
+    filtered.sort((a, b) => {
+      if (filter === "") {
+        if (a.status === "For Sale" && b.status === "For Rent") return -1;
+        if (a.status === "For Rent" && b.status === "For Sale") return 1;
+      }
+      return a.name.localeCompare(b.name);
+    });
 
     setFilteredProperties(filtered);
   }, [properties, search, filter]);
-
-  
 
   return (
     <section className="flex flex-col items-center w-full min-h-screen py-10 bg-gray-50 dark:bg-gray-900">
