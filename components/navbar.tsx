@@ -54,7 +54,7 @@ export const Navbar = () => {
   return (
     <>
       {/* Navbar for small screens */}
-      <div className="md:hidden flex items-center justify-between p-4 bg-violet-700 shadow-md sticky top-0 left-0 w-full z-50">
+      <div className="md:hidden fixed top-0 left-0 w-full z-50 flex items-center justify-between p-4 bg-violet-700 shadow-md">
         <button
           aria-controls="logo-sidebar"
           aria-expanded={isSidebarOpen ? "true" : "false"}
@@ -97,123 +97,123 @@ export const Navbar = () => {
       </div>
 
       {/* Sidebar */}
-      <aside
-        aria-label="Sidebar"
-        className={`
-          fixed top-0 left-0 z-50 w-64 h-screen 
-          transition-transform bg-cover bg-center bg-no-repeat 
-          dark:bg-gray-800 
-          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
-          md:translate-x-0`}
-        id="logo-sidebar"
-      >
-        <div
-          className="h-full flex flex-col px-3 py-2 overflow-y-auto bg-cover bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://abicrealtyphdianne.com/media/abic-sidebar.png')",
-          }}
+      <div>
+        <aside
+          aria-label="Sidebar"
+          className={`
+            fixed top-0 left-0 z-40 w-64 h-full 
+            transition-transform bg-cover bg-center bg-no-repeat 
+            dark:bg-gray-800 
+            ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+            md:translate-x-0`}
+          id="logo-sidebar"
         >
-          {/* Logo Section */}
-          <Link
-            className="hidden md:flex items-center justify-center mb-6"
-            href="/"
+          <div
+            className="h-full flex flex-col px-3 py-5 overflow-y-auto bg-cover bg-no-repeat"
+            style={{
+              backgroundImage:
+                "url('https://abicrealtyphdianne.com/media/abic-sidebar.png')",
+            }}
           >
-            <Image
-              alt="ABIC Logo"
-              height={200}
-              src="/abic-realty-logo.png"
-              width={200}
-            />
-          </Link>
+            {/* Logo Section */}
+            <Link
+              className="hidden md:flex items-center justify-center mb-6"
+              href="/"
+            >
+              <Image
+                alt="ABIC Logo"
+                height={200}
+                src="/abic-realty-logo.png"
+                width={200}
+              />
+            </Link>
 
-          {/* Navigation Links */}
-          <nav className="flex-1">
-            <ul className="space-y-1 mt-24 md:mt-2 font-medium flex-1">
-              {[ 
-                { path: "/", label: "Home" },
-                { path: "/about", label: "About Us" },
-                { path: "/whatsnew", label: "What's New" },
-                { path: "/properties", label: "Properties" },
-                { path: "/services", label: "Services" },
-                { path: "/careers", label: "Careers" },
-                { path: "/contact", label: "Contact Us", external: true },
-              ].map((link) => (
-                <li key={link.path}>
-                  <Link
-                    className={`flex items-center p-2 text-white rounded-lg group ${
-                      pathname === link.path
-                        ? "bg-violet-800 font-bold"
-                        : "hover:bg-violet-800"
-                    }`}
-                    href={link.path}
-                  >
-                    <span className="ml-3">{link.label}</span>
-                  </Link>
-                </li>
-              ))}
+            {/* Navigation Links */}
+            <nav className="flex">
+              <ul className="space-y-1 mt-24 md:mt-2 font-medium flex-1">
+                {[
+                  { path: "/", label: "Home" },
+                  { path: "/about", label: "About Us" },
+                  { path: "/whatsnew", label: "What's New" },
+                  { path: "/properties", label: "Properties" },
+                  { path: "/services", label: "Services" },
+                  { path: "/careers", label: "Careers" },
+                  { path: "/contact", label: "Contact Us", external: true },
+                ].map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      className={`flex items-center p-2 text-white rounded-lg group ${pathname === link.path
+                          ? "bg-violet-800 font-bold"
+                          : "hover:bg-violet-800"
+                        }`}
+                      href={link.path}
+                    >
+                      <span className="ml-3">{link.label}</span>
+                    </Link>
+                  </li>
+                ))}
 
-              {/* Separator */}
-              <li className="my-4 border-t border-white/20" />
+                {/* Separator */}
+                <li className="my-4 border-t border-white/20" />
 
-              {/* Additional Links */}
-              {[ 
-                { path: "/documents", label: "DMCI Documents" },
-                { path: "/submit-property", label: "Submit Property" },
-                { path: "/loancalculator", label: "Loan Calculator" },
-                {
-                  path: "/room-planner",
-                  label: "Room Planner",
-                  isRoomPlanner: true,
-                },
-              ].map((link) => (
-                <li key={link.path || link.label}>
-                  <a
-                    className={`flex items-center p-2 text-white rounded-lg dark:text-white group ${
-                      pathname === link.path
-                        ? "bg-violet-800 dark:bg-gray-700"
-                        : "hover:bg-violet-800 dark:hover:bg-gray-700"
-                    }`}
-                    href={link.path}
-                    onClick={link.isRoomPlanner ? handleRoomPlannerClick : undefined}
-                  >
-                    <span className="ml-3">{link.label}</span>
-                  </a>
-                </li>
-              ))}
+                {/* Additional Links */}
+                {[
+                  { path: "/documents", label: "DMCI Documents" },
+                  { path: "/submit-property", label: "Submit Property" },
+                  { path: "/loancalculator", label: "Loan Calculator" },
+                  {
+                    path: "/room-planner",
+                    label: "Room Planner",
+                    isRoomPlanner: true,
+                  },
+                ].map((link) => (
+                  <li key={link.path || link.label}>
+                    <a
+                      className={`flex items-center p-2 text-white rounded-lg dark:text-white group ${pathname === link.path
+                          ? "bg-violet-800 dark:bg-gray-700"
+                          : "hover:bg-violet-800 dark:hover:bg-gray-700"
+                        }`}
+                      href={link.path}
+                      onClick={link.isRoomPlanner ? handleRoomPlannerClick : undefined}
+                    >
+                      <span className="ml-3">{link.label}</span>
+                    </a>
+                  </li>
+                ))}
 
-              {/* Show "App Installed" if already installed */}
-              {isInstallable && !isInstalled && (
-                <li className="mt-6">
-                  <a
-                    href="#"
-                    onClick={handleInstallAppClick}
-                    className="
-                      flex w-full items-center justify-center gap-2
-                      rounded-lg border-2 border-purple-500 px-4 py-3
-                      text-purple-300 font-semibold transition
-                      hover:border-purple-400 hover:text-purple-200
-                      hover:shadow-[0_0_12px_rgba(168,85,247,0.6)]
-                    "
-                  >
-                    <span>Install App</span>
-                  </a>
-                </li>
-              )}
-            </ul>
-          </nav>
+                {/* Show "App Installed" if already installed */}
+                {isInstallable && !isInstalled && (
+                  <li className="mt-6">
+                    <a
+                      href="#"
+                      onClick={handleInstallAppClick}
+                      className="
+                          flex w-full items-center justify-center gap-2
+                          rounded-lg border-2 border-purple-500 px-4 py-3
+                          text-purple-300 font-semibold transition
+                          hover:border-purple-400 hover:text-purple-200
+                          hover:shadow-[0_0_12px_rgba(168,85,247,0.6)]
+                        "
+                    >
+                      <span>Install App</span>
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </nav>
 
-          {/* Google Translate Component - positioned at bottom left */}
-          <div className="space-y-4">
-            <GoogleTranslate />
+            {/* Google Translate Component - positioned at bottom left */}
+            <div className="space-y-4">
+              <GoogleTranslate />
+            </div>
+
+            {/* Footer and Chatbot */}
+            {!isRoomPlannerPage && (
+              <div>{/* Footer Content (Social Media Links & Chatbot) */}</div>
+            )}
           </div>
-
-          {/* Footer and Chatbot */}
-          {!isRoomPlannerPage && (
-            <div>{/* Footer Content (Social Media Links & Chatbot) */}</div>
-          )}
-        </div>
-      </aside>
+        </aside>
+      </div>
 
       {/* Modal */}
       {isModalOpen && (
