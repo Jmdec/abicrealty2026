@@ -70,7 +70,7 @@ const AgentProfile: React.FC<ProfileProps> = ({ agent }) => {
                   </div>
                 )}
 
-                <div className="grid grid-cols-12 gap-6 md:gap-4 items-center md:h-[17vh] md:w-[30vh] lg:h-[20vh] xl:h-[25vh] lg:w-full">
+                <div className="grid grid-cols-12 gap-6 md:gap-4 items-center md:h-[25vh] md:w-[30vh] lg:h-[25vh] lg:w-full">
                   {/* Image Section */}
                   <div className="relative col-span-4 w-full">
                     <Image

@@ -105,7 +105,7 @@ export default async function PropertyPage({
                                 <AgentProfile agent={fetchAgent} />
                             </div>
                         </div>
-                        <div className="lg:hidden md:col-span-3">
+                        <div className="lg:hidden col-span-3">
                             <FAQ />
                         </div>
                     </div>
