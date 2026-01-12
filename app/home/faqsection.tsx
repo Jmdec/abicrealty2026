@@ -23,7 +23,7 @@ const FAQSection = () => {
             <Image
               alt="HeroUI hero Image"
               src="https://abicrealtyphdianne.com/media/Questions-rafiki.png"
-              className="h-[50vh] w-full lg:h-full"
+              className="h-[30vh] lg:h-[50vh] w-full"
             />
           </div>
           <div>
