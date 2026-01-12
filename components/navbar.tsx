@@ -109,7 +109,7 @@ export const Navbar = () => {
           id="logo-sidebar"
         >
           <div
-            className="h-full flex flex-col px-3 py-5 overflow-y-auto bg-cover bg-no-repeat"
+            className="h-full flex flex-col px-3 lg:py-5 overflow-y-auto bg-cover bg-no-repeat"
             style={{
               backgroundImage:
                 "url('https://abicrealtyphdianne.com/media/abic-sidebar.png')",
