@@ -23,20 +23,18 @@ const ServicesCard = () => {
   }
 
   return (
-    <div className="flex py-12 gap-2">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-12 justify-items-center">
       {services.map((service: any, index: number) => (
         <Link key={index} href={`/services/${service.id}`}>
           <Card>
-            <CardBody className="overflow-visible py-2">
+            <CardBody className="overflow-visible py-2 max-w-xs lg:max-w-lg">
               <div className="flex justify-center items-center">
                 <Image
                   isBlurred
                   isZoomed
                   alt="Card background"
-                  className="rounded-xl"
+                  className="rounded-xl h-[25vh] lg:h-[40vh]"
                   fallbackSrc="https://abicrealtyphdianne.com/media/abic-fallback1.png"
-                  height={300}
-                  width={500}
                   src={`https://abicrealtyphdianne.com/services/${service.image}`}
                 />
               </div>
@@ -50,7 +48,6 @@ const ServicesCard = () => {
           </Card>
         </Link>
       ))}
-      
     </div>
   )
 }
