@@ -10,10 +10,10 @@ const ConstructionSection = () => {
     <section className="flex flex-col items-center gap-6 py-6 md:py-16 w-full">
       <div className="container mx-auto">
         <div className="text-start">
-          <h1 className="font-bold text-3xl md:text-4xl text-violet-700 dark:text-white">
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase">
             On-going Infrastructure
           </h1>
-          <p className="md:text-md text-default-500 max-w-2xl dark:text-gray-300">
+          <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed">
             Stay informed about the latest infrastructure projects that shape
             the future of real estate, driving growth and creating new
             opportunities.

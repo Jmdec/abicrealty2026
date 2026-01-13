@@ -9,7 +9,7 @@ const FAQSection = () => {
     <section className="flex flex-col items-center gap-6 py-6 md:py-8 w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="font-bold text-2xl md:text-3xl text-violet-700 dark:text-white">
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700">
             Frequently Asked Questions
           </h1>
           <p className="text-sm md:text-lg text-default-500 max-w-2xl dark:text-gray-300 leading-4">
@@ -23,7 +23,7 @@ const FAQSection = () => {
             <Image
               alt="HeroUI hero Image"
               src="https://abicrealtyphdianne.com/media/Questions-rafiki.png"
-              className="h-[30vh] lg:h-[50vh] xl:h[70vh] w-full"
+              className="h-[30vh] lg:h-[40vh] xl:h-[70vh] w-full"
             />
           </div>
           <div>

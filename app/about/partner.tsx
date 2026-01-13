@@ -37,8 +37,8 @@ export default async function OurPartnerSection() {
     <section className="flex flex-col items-center gap-6 py-6 md:py-10 w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase my-3">
-            Our Partner
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase">
+            Our PartneR
           </h1>
           <p className="text-default-500 max-w-xl text-sm md:text-lg">
             Partnering with trusted names to deliver exceptional real estate

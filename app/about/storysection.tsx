@@ -10,7 +10,7 @@ const StorySection = () => {
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
           <div>
-            <h1 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase mb-4">
+            <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase mb-4">
               Our Story
             </h1>
 

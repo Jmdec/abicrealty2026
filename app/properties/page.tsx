@@ -122,10 +122,10 @@ export default function PropertiesPage() {
     <section className="flex flex-col items-center w-full min-h-screen py-10 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 max-w-7xl">
         <header className="text-center mb-8">
-          <h1 className="font-extrabold text-4xl md:text-5xl text-violet-700 dark:text-violet-400 uppercase mb-2">
+          <h1 className="font-bold text-4xl lg:text-5xl text-violet-700 uppercase">
             Properties
           </h1>
-          <p className="text-md md:text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+          <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed">
             Discover the perfect property with unmatched quality, dedication,
             and personalized guidance.
           </p>

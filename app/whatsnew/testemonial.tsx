@@ -14,11 +14,11 @@ const TestemonialSection: React.FC = () => {
     <section className="flex flex-col items-center gap-6 py-8 md:py-16 w-full">
       <div className="container mx-auto">
         <div className="text-start">
-          <h1 className="font-bold text-3xl md:text-4xl text-violet-700">
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase">
             Testimonials
           </h1>
 
-          <p className="md:text-md text-default-500 max-w-2xl">
+          <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed">
             Explore the stories and experiences of our delighted clients who
             found their dream homes with our dedicated support.
           </p>

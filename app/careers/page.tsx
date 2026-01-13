@@ -84,10 +84,10 @@ export default async function CareersPage() {
     <section className="flex flex-col items-center w-full">
       <div className="container mx-auto px-6">
         <div className="flex flex-col">
-          <h1 className="font-bold text-4xl md:text-4xl text-violet-700 dark:text-white uppercase">
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase">
             Careers
           </h1>
-          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-2">
+          <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed">
           Build a meaningful career with us. We’re looking for passionate individuals
           who want to grow, innovate, and make a real impact. Whether you’re just starting
           out or looking to take the next step in your professional journey, you’ll find

@@ -47,7 +47,7 @@ export default function ServicesPage() {
     <section className="flex flex-col items-center w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col">
-          <h1 className="font-bold text-4xl md:text-4xl text-violet-700 dark:text-white uppercase">Services</h1>
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase">Services</h1>
           <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-2">
             Experience exceptional real estate services, tailored to meet your needs and exceed expectations.
           </p>

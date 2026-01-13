@@ -63,7 +63,7 @@ const GoogleTranslate = () => {
   return (
     <div className="mt-4">
       <div 
-        className="flex justify-center items-center p-3 rounded-lg cursor-pointer border-2 border-purple-500 text-purple-400 font-bold shadow-md transition-all duration-300 hover:text-purple-300 hover:border-purple-400 hover:shadow-[0_0_10px_2px_rgba(168,85,247,0.7)] relative overflow-hidden"
+        className="flex justify-center items-center w-full p-3 rounded-lg cursor-pointer border-2 border-purple-500 text-purple-400 font-bold shadow-md transition-all duration-300 hover:text-purple-300 hover:border-purple-400 hover:shadow-[0_0_10px_2px_rgba(168,85,247,0.7)] relative overflow-hidden"
         onClick={handleTranslateClick}
       >
         

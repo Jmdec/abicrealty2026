@@ -28,7 +28,7 @@ const PropertySection = ({ properties = [] }: PropertySectionProps) => {
     <section className="flex flex-col justify-center items-center gap-6 py-12 md:py-12 w-full">
       <div className="container mx-auto px-4">
         <div className="text-center">
-          <h1 className="font-bold text-2xl md:text-3xl text-violet-800 dark:text-white">
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700">
             Featured Properties
           </h1>
           <p className="text-sm md:text-lg text-default-500 dark:text-gray-300 leading-4">

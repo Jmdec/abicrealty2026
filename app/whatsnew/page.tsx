@@ -1,4 +1,8 @@
 "use client";
+
+import React, { useMemo, useState } from "react";
+import ContactSection from "../home/contactsection";
+import { whatsnewData } from "./data";
 import {
   Tabs,
   Tab,
@@ -8,56 +12,72 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
-import { useState } from "react";
-import ContactSection from "../home/contactsection";
-import { whatsnewData } from "./data";
 
 export default function WhatsNewPage() {
-  const [selectedTab, setSelectedTab] = useState<number>(whatsnewData[0].key);
+  const [selectedTab, setSelectedTab] = useState<string>(
+    whatsnewData[0].key.toString()
+  );
+
+  const selectedTitle = useMemo(() => {
+    return (
+      whatsnewData.find((item) => item.key.toString() === selectedTab)
+        ?.title ?? "Select"
+    );
+  }, [selectedTab]);
 
   return (
     <section className="flex flex-col items-center w-full">
       <div className="container mx-auto px-4">
         <div className="flex w-full flex-col">
-          {/* Tabs for larger screens */}
-          <div className="hidden md:block">
+
+          {/* Tabs – desktop */}
+          <div className="hidden lg:block">
             <Tabs
-              aria-label="Options"
-              selectedKey={selectedTab.toString()}
-              onSelectionChange={(key) => setSelectedTab(Number(key))}
+              aria-label="What's New Tabs"
+              selectedKey={selectedTab}
+              onSelectionChange={(key) => setSelectedTab(key.toString())}
             >
               {whatsnewData.map((data) => (
-                <Tab key={data.key} title={data.title}>
+                <Tab key={data.key.toString()} title={data.title}>
                   {data.content}
                 </Tab>
               ))}
             </Tabs>
           </div>
 
-          {/* Dropdown for smaller screens */}
-          <div className="md:hidden w-full">
+          {/* Dropdown – mobile */}
+          <div className="block lg:hidden w-full">
             <Dropdown>
               <DropdownTrigger>
-                <Button className="w-full" variant="bordered">
-                  Choose a Section
+                <Button variant="bordered" className="justify-between">
+                  {selectedTitle}
                 </Button>
               </DropdownTrigger>
+
               <DropdownMenu
-                aria-label="Tabs Dropdown"
-                onAction={(key) => setSelectedTab(Number(key))}
+                aria-label="What's New Tabs Dropdown"
+                selectedKeys={[selectedTab]}
+                onAction={(key) => setSelectedTab(key.toString())}
               >
                 {whatsnewData.map((data) => (
-                  <DropdownItem key={data.key}>{data.title}</DropdownItem>
+                  <DropdownItem key={data.key.toString()}>
+                    {data.title}
+                  </DropdownItem>
                 ))}
               </DropdownMenu>
             </Dropdown>
 
             <div className="mt-4 w-full">
-              {whatsnewData.find((data) => data.key === selectedTab)?.content}
+              {
+                whatsnewData.find(
+                  (data) => data.key.toString() === selectedTab
+                )?.content
+              }
             </div>
           </div>
         </div>
       </div>
+
       <ContactSection />
     </section>
   );

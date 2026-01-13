@@ -11,7 +11,7 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 items-center">
           <div className="col-span-3 lg:col-span-2">
-            <h1 className="font-bold max-w-lg text-4xl  text-violet-700">
+            <h1 className="font-bold text-4xl lg:text-5xl text-violet-700">
               Connect with us
             </h1>
             <p className="text-base md:text-lg text-gray-600 max-w-4xl dark:text-gray-300 leading-6 py-2">

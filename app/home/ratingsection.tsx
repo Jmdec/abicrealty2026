@@ -8,11 +8,11 @@ import FeedbackForm from "./feedbackform";
 
 const RatingSection = () => {
   return (
-    <section className="flex flex-col items-center gap-6 py-8 md:py-2 w-full justify-center">
+    <section className="flex flex-col items-center gap-6 py-8 md:py-2 w-full justify-center bg-gray-50">
       <div className="container mx-auto px-4 flex flex-col items-center justify-center">
         {/* Title Section */}
         <div className="text-center">
-          <h1 className="font-bold text-2xl md:text-3xl text-violet-700 dark:text-white">
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700">
             Share Your Experience
           </h1>
           <p className="text-sm md:text-lg text-default-500 dark:text-gray-300 leading-6">

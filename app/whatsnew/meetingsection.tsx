@@ -15,10 +15,10 @@ const MeetingSection = () => {
     <section className="flex flex-col items-center gap-6 py-6 md:py-16 w-full">
       <div className="container mx-auto">
         <div className="text-start">
-          <h1 className="font-bold text-3xl md:text-4xl text-violet-700 dark:text-white">
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase">
             Meetings
           </h1>
-          <p className="md:text-md text-default-500 max-w-2xl">
+          <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed">
             Discover our collaborative meetings that foster communication,
             innovation, and problem-solving within the real estate industry.
           </p>

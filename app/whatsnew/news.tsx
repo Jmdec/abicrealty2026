@@ -15,10 +15,10 @@ const NewsSection = () => {
     <section className="flex flex-col items-center gap-6 py-6 md:py-16 w-full">
       <div className="container mx-auto">
         <div className="text-start">
-          <h1 className="font-bold text-3xl md:text-4xl text-violet-700 dark:text-white">
+          <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase">
             Real Estate News
           </h1>
-          <p className="md:text-md text-default-500 max-w-2xl dark:text-gray-300">
+          <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed">
             Stay updated with the latest trends, insights, and developments in
             the real estate market to make informed decisions and seize new
             opportunities.

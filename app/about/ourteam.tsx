@@ -17,7 +17,7 @@ export default async function OurTeam() {
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="flex flex-col items-center justify-center text-center">
-                    <h1 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase my-3">
+                    <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase">
                         Meet Our Team
                     </h1>
                     <p className="text-default-500 max-w-xl text-sm md:text-lg">

@@ -26,7 +26,7 @@ const AbicSection = () => {
             />
           </div>
           <div className="md:px-2">
-            <h1 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase my-3">
+            <h1 className="font-bold text-3xl lg:text-4xl text-violet-700 uppercase my-3">
               Who is ABIC Realty & Consultancy Corporation
             </h1>
             <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed text-justify">
