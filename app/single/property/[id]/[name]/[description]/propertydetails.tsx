@@ -158,7 +158,7 @@ const PropertyDetails: React.FC<PropertyProps> = ({ properties }) => {
                         {properties.description}
                     </p>
                 
-                    <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 mt-3">
+                    <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 mt-3">
 
                         {properties.status === "For Sale" ? (
                             <>

@@ -282,7 +282,7 @@ doc.save("loan_calculation_results.pdf");
         </TableBody>
       </Table>
 
-      <Button color="primary" onClick={downloadTableAsPDF} className="mt-4">
+      <Button color="primary" onPress={downloadTableAsPDF} className="mt-4">
         Download Results as PDF
       </Button>
     </div>

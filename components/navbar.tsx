@@ -54,7 +54,7 @@ export const Navbar = () => {
   return (
     <>
       {/* Navbar for small screens */}
-      <div className="md:hidden fixed top-0 left-0 w-full z-50 flex items-center justify-between p-4 bg-violet-700 shadow-md">
+      <div className="md:hidden sticky top-0 left-0 w-full z-50 flex items-center justify-between p-4 bg-violet-700 shadow-md">
         <button
           aria-controls="logo-sidebar"
           aria-expanded={isSidebarOpen ? "true" : "false"}
@@ -90,8 +90,10 @@ export const Navbar = () => {
           <Image
             alt="ABIC Logo"
             height={80}
-            src="/abic-realty-logo.png"
             width={80}
+            priority
+            className="h-12 w-auto"
+            src="/abic-realty-logo.png"
           />
         </Link>
       </div>
@@ -109,7 +111,7 @@ export const Navbar = () => {
           id="logo-sidebar"
         >
           <div
-            className="h-full flex flex-col px-3 lg:py-5 overflow-y-auto bg-cover bg-no-repeat"
+            className="h-full flex flex-col px-3 md:py-5 overflow-y-auto bg-cover bg-no-repeat"
             style={{
               backgroundImage:
                 "url('https://abicrealtyphdianne.com/media/abic-sidebar.png')",
@@ -143,8 +145,8 @@ export const Navbar = () => {
                   <li key={link.path}>
                     <Link
                       className={`flex items-center p-2 text-white rounded-lg group ${pathname === link.path
-                          ? "bg-violet-800 font-bold"
-                          : "hover:bg-violet-800"
+                        ? "bg-violet-800 font-bold"
+                        : "hover:bg-violet-800"
                         }`}
                       href={link.path}
                     >
@@ -170,8 +172,8 @@ export const Navbar = () => {
                   <li key={link.path || link.label}>
                     <a
                       className={`flex items-center p-2 text-white rounded-lg dark:text-white group ${pathname === link.path
-                          ? "bg-violet-800 dark:bg-gray-700"
-                          : "hover:bg-violet-800 dark:hover:bg-gray-700"
+                        ? "bg-violet-800 dark:bg-gray-700"
+                        : "hover:bg-violet-800 dark:hover:bg-gray-700"
                         }`}
                       href={link.path}
                       onClick={link.isRoomPlanner ? handleRoomPlannerClick : undefined}
@@ -198,6 +200,22 @@ export const Navbar = () => {
                       <span>Install App</span>
                     </a>
                   </li>
+                )}
+                {/* Show "App Installed" if already installed */}
+                {isInstalled && (
+                  <div className="mt-4">
+                    <div className="flex items-center px-4 py-2 text-green-300 rounded-lg bg-green-800/30 border border-green-500/30">
+                      <svg
+                        className="w-4 h-4 text-green-300 mr-2"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span>App Installed</span>
+                    </div>
+                  </div>
                 )}
               </ul>
             </nav>
