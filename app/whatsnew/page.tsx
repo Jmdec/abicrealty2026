@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
+import { ChevronDown } from "lucide-react";
 
 export default function WhatsNewPage() {
   const [selectedTab, setSelectedTab] = useState<string>(
@@ -50,7 +51,7 @@ export default function WhatsNewPage() {
             <Dropdown>
               <DropdownTrigger>
                 <Button variant="bordered" className="justify-between">
-                  {selectedTitle}
+                  {selectedTitle} <ChevronDown className="h-5 w-5" />
                 </Button>
               </DropdownTrigger>
 

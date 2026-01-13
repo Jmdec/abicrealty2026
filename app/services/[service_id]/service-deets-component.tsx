@@ -1,4 +1,5 @@
 "use client"
+
 import { Image } from "@nextui-org/react"
 import { BsCheckCircle } from "react-icons/bs"
 import { Toaster } from "react-hot-toast"
@@ -10,6 +11,7 @@ interface ServiceDeetsComponentProps {
       name: string
       description: string
       image: string
+      benefit: string
     }
   }
 }
