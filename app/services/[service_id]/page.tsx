@@ -1,33 +1,40 @@
 import ServiceDeetsComponent from "./service-deets-component";
+import { servicesData } from "../data";
 
 const fetchData = async (service_id: string) => {
-  const res = await fetch(`https://abicrealtyphdianne.com/api/main/services/${service_id}`)
-  const data = await res.json()
+  const service = servicesData.find((s) => s.id === service_id);
+  if (!service) return null;
 
-  return data
-}
+  return { record: service };
+};
 
+// ✅ FIX 1: await params
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ service_id: string }>
+  params: Promise<{ service_id: string }>;
 }) {
-  const { service_id } = await params
-  const service = await fetchData(service_id)
+  const { service_id } = await params;
+  const service = await fetchData(service_id);
 
   return {
-    title: `${service.record.name} - ${service.record.description}`,
-    description: service.record.description,
-  }
+    title: service
+      ? `${service.record.name} - ABIC Realty`
+      : "Service Not Found",
+    description: service?.record.description,
+  };
 }
 
-export default async function ProductPage({
+// ✅ FIX 2: await params
+export default async function ServicePage({
   params,
 }: {
-  params: Promise<{ service_id: string }>
+  params: Promise<{ service_id: string }>;
 }) {
-  const { service_id } = await params
-  const service = await fetchData(service_id)
+  const { service_id } = await params;
+  const service = await fetchData(service_id);
 
-  return <ServiceDeetsComponent service={service} />
+  if (!service) return <p>Service not found</p>;
+
+  return <ServiceDeetsComponent service={service} />;
 }

@@ -1,75 +1,118 @@
-"use client"
+"use client";
 
-import { Image } from "@nextui-org/react"
-import { BsCheckCircle } from "react-icons/bs"
-import { Toaster } from "react-hot-toast"
+import { Image } from "@nextui-org/react";
+import { BsCheckCircle } from "react-icons/bs";
+import { Toaster } from "react-hot-toast";
+import type { ServiceRecord } from "../data";
 
 interface ServiceDeetsComponentProps {
   service: {
-    record: {
-      id: string
-      name: string
-      description: string
-      image: string
-      benefit: string
-    }
-  }
+    record: ServiceRecord; // ✅ USE THE SAME TYPE
+  };
 }
 
-export default function ServiceDeetsComponent({ service }: ServiceDeetsComponentProps) {
-  if (!service) {
-    return <p>Something went wrong</p>
+export default function ServiceDeetsComponent({
+  service,
+}: ServiceDeetsComponentProps) {
+  if (!service?.record) {
+    return <p>Something went wrong</p>;
   }
+
+  const { name, description, support, benefit, image, edge } = service.record;
+
+  const benefits = benefit
+    ?.split("?")
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  const supports =
+    service.record.support?.split("?").map((s) => s.trim()).filter(Boolean) ?? [];
+
+  const edges =
+    service.record.edge?.split("?").map((e) => e.trim()).filter(Boolean) ?? [];
+
   return (
     <div>
-      <Toaster position="top-center" reverseOrder={false} />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+      <Toaster position="top-center" />
+
+      <div className="flex items-center justify-center mx-auto px-4 lg:px-8">
+        <div className="flex">
           <div>
-            <div className="flex justify-between items-center">
-              <h2 className="font-bold text-2xl md:text-3xl text-violet-700 uppercase ">{service.record.name}</h2>
-            </div>
-            <p className="text-base text-default-500 dark:text-gray-300 leading-relaxed text-justify mt-2">
-              {service.record.description.split("?").map((part, index) => (
-                <span key={index}>
-                  {part.trim()}
-                  <br />
-                </span>
-              ))}
-            </p>
-            <div className="mt-8">
-              <div className="flex items-center">
-                <h3 className="flex-shrink-0 pr-4 text-sm font-semibold uppercase tracking-wider text-indigo-600">
-                  Key Benefits
+            {supports.length > 0 && (
+              <div className="mt-8">
+                <h3 className="text-sm font-semibold uppercase text-indigo-600">
+                  What We Handle
                 </h3>
-                <div className="flex-1 border-t-2 border-gray-200"></div>
+                <h2 className="font-bold text-3xl text-violet-700 uppercase">
+                  {name}
+                </h2>
+                <p className="my-2 text-default-500 text-justify">
+                  {description}
+                </p>
+                <ul className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-4">
+                  {supports.map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <BsCheckCircle className="h-5 w-5 text-green-400 mt-1" />
+                      <p className="ml-3 text-sm">{item}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5">
-                {["Benefit 1", "Benefit 2", "Benefit 3", "Benefit 4"].map((benefit, index) => (
-                  <li key={index} className="flex items-start lg:col-span-1">
-                    <div className="flex-shrink-0">
-                      <BsCheckCircle className="h-5 w-5 text-green-400" aria-hidden="true" />
-                    </div>
-                    <p className="ml-3 text-sm text-gray-700">{benefit}</p>
-                  </li>
-                ))}
-              </ul>
+            )}
+
+            <div className="flex items-center justify-center">
+              {benefits?.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="text-center text-sm font-semibold uppercase text-indigo-600">
+                    Key Benefits
+                  </h3>
+                  <h2 className="text-center font-bold text-3xl text-violet-700 uppercase">
+                    Why Client Trust Us
+                  </h2>
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-4">
+                    {benefits.map((item, index) => (
+                      <div className="border rounded-xl p-4">
+                        <li key={index} className="flex items-start">
+                          <h1 className="font-semibold ml-3 text-md">{item}</h1>
+                        </li>
+                      </div>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-          </div>
-          <div className="mt-12 relative text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none">
-            <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
-              <Image
-                isBlurred
-                isZoomed
-                src={`https://abicrealtyphdianne.com/services/${service.record.image}`}
-                alt={service.record.name}
-                width={300}
-                height={200}
-              />
+
+            <div>
+              {edges?.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="text-sm font-semibold uppercase text-indigo-600 mb-4">
+                    Why Choose Us
+                  </h3>
+                  <ul className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    {edges.map((item, index) => (
+                      <li key={index} className="flex items-start">
+                        <BsCheckCircle className="h-5 w-5 text-green-400 mt-1" />
+                        <p className="ml-3 text-sm">{item}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
+        <div className="mt-10 lg:mt-0">
+          <Image
+            isBlurred
+            isZoomed
+            src={image}
+            alt={name}
+            width={400}
+            height={300}
+            className="rounded-xl"
+          />
+        </div>
       </div>
     </div>
-  )
+  );
 }
