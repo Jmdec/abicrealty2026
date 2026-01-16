@@ -26,9 +26,10 @@ export default function ServicesPage() {
                     isBlurred
                     isZoomed
                     alt={service.name}
-                    className="rounded-xl h-[25vh] lg:h-[40vh]"
-                    fallbackSrc="https://abicrealtyphdianne.com/media/abic-fallback1.png"
-                    src={`https://abicrealtyphdianne.com/services/${service.image}`}
+                    className="rounded-xl object-cover"
+                    src={`${service.image}`}
+                    width={600}
+                    height={400}
                   />
                   <div className="p-5 my-3">
                     <h4 className="font-bold text-2xl my-2">{service.name}</h4>
