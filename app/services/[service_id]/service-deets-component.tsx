@@ -90,7 +90,7 @@ export default function ServiceDeetsComponent({
                 <h2 className="text-center font-bold text-3xl text-violet-700 uppercase">
                   Your Success is Our Priority
                 </h2>
-                <ul className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-4">
+                <ul className="grid grid-cols-3 gap-5 my-4">
                   {edges.map((item, index) => (
                     <li key={index} className="flex items-start">
                       <BsCheckCircle className="h-5 w-5 text-green-400 mt-1" />
